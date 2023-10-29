@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login Form | CodingLab</title>
+    <link href="static/css/login.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  </head>
+  <body>
+  <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Login Form</span></div>
+    <form action="login" method="post" name="sign up for beta form">
+      {% csrf_token %}
+        <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text"  id="username" name="username" placeholder="username" class="textBox" required>
+        </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="text"  id="password" name="password" placeholder="password" class="textBox">
+          </div>
+          <div class="pass"><a href="#">Forgot password?</a></div>
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+        <p>Not register yet? <a href="{% url 'schoolapp:register' %}">Register</a></p>
+        </form>
+      </div>
+ </div>
+
+  </body>
+</html>

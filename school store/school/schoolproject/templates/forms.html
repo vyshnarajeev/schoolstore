@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="static/css/other.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Body of Form starts -->
+  	<div class="container">
+      <form method="post" autocomplete="on">
+          {% csrf_token %}
+        <!--First name-->
+    		<div class="box">
+          <label for="firstName" class="fl fontLabel">  Name: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="firstName" placeholder=" Name"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--First name-->
+
+
+       <div class="box">
+          <label for="email" class="fl fontLabel"> Email ID: </label>
+    			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="email" required name="email" placeholder="Email Id" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Email ID----->
+
+        <div class="box">
+          <label for="dob" class="fl fontLabel"> DOB: </label>
+    			<div class="fl iconBox"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="date" required name="dob" placeholder="DOB" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--AGE----->
+          <div class="box">
+                <label for="age" class="fl fontLabel"> Age: </label>
+    			<div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="age" maxlength="10" placeholder="Enter your age" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Phone No.------>
+    		<div class="box">
+          <label for="phone" class="fl fontLabel"> Phone No: </label>
+    			<div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="phoneNo" maxlength="10" placeholder="Phone No." class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Phone No.---->
+
+
+    		<!---Email ID---->
+    		<div class="box">
+          <label for="address" class="fl fontLabel"> Address: </label>
+    			<div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="address" placeholder="Address" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+
+          <!---dept-->
+
+<div class="box">
+    <label for="country" class="fl fontLabel">Department:</label>
+    <div class="fl iconBox"><i class="fa-caret-down" aria-hidden="true"></i></div>
+     <div class="fr">
+        <select id="country" class="textBox">
+            <option value="">-- Select Department --</option>
+            <option value="usa">Engineering</option>
+            <option value="canada">Commerce</option>
+            <option value="physics">Physics</option>
+            <option value="chemistry">Chemistry</option>
+            <option value="mathematics">Mathematics</option>
+        </select>
+
+    <br>
+     </div>
+</div>
+ <div class="box">
+    <label for="city" class="fl fontLabel">Course:</label>
+     <div class="fl iconBox"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+     <div class="fr">
+         <select id="city" class="textBox">
+            <option value="">-- Select Course --</option>
+         </select>
+     </div>
+</div>
+    <script>
+        // Data for dependent dropdown options
+        const citiesByCountry = {
+            usa: ["CSE", "EEE", "ECE","ME","CE"],
+            canada: ["B.com", "M.com", "CA"],
+            physics: ["BA", "MA"],
+            chemistry: ["BA", "MA"],
+            mathematics: ["BA", "MA"]
+        };
+
+        // Get references to the select elements
+        const countrySelect = document.getElementById("country");
+        const citySelect = document.getElementById("city");
+
+        // Event listener for the country dropdown
+        countrySelect.addEventListener("change", function() {
+            const selectedCountry = countrySelect.value;
+            citySelect.innerHTML = ""; // Clear the city dropdown
+
+            if (selectedCountry in citiesByCountry) {
+                citiesByCountry[selectedCountry].forEach(function(city) {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "-- Select City --";
+                citySelect.appendChild(defaultOption);
+            }
+        });
+    </script>
+
+
+
+
+    		<!--Purpose----->
+          <div class="box">
+          <label id="purpose" class="fl fontLabel"> Purpose: </label>
+             <div class="fl iconBox"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+             <div class="fr">
+                 <select id="dropdown"  name="purpose" required  class="textBox">
+                     <option disabled selected value>
+        Select
+      </option>
+                            <option value="enquiry">Enquiry</option>
+                            <option value="placeorder">Place Order</option>
+                            <option value="return">Return</option>
+                </select>
+             	</div>
+    			<div class="clr"></div>
+</div>
+<!---dept--->
+
+
+ <!----material-------------->
+
+          <div class="box checkbox">
+          <label for="material" class="fl fontLabel"> Material Provide : </label><br>
+    				<input type="checkbox" id="notebook" name="notebook" value="Notebook">&nbsp;
+                    <label for="notebook"> Notebook</label>
+    				<input type="checkbox" id="pencil" name="pencil" value="Pencil">&nbsp;
+                    <label for="pencil"> Pencil</label>
+                    <input type="checkbox" id="exampaper" name="exampaper" value="Exam paper">&nbsp;
+                    <label for="exampaper"> Exam paper</label><br>
+                    <input type="checkbox" id="pen" name="pen" value="Pen">&nbsp;
+                    <label for="pen">Pen</label>
+                    <input type="checkbox" id="pen" name="paper" value="Paper">&nbsp;
+                    <label for="paper"> Paper</label>
+    		</div>
+
+
+
+    		<!---gender------>
+            <div class="box radio">
+                 <label for="gender" class="fl fontLabel"> Gender: </label>
+                <label>
+                    <input type="radio" name="Gender" value="Male" required>
+                </label> Male &nbsp; &nbsp; &nbsp; &nbsp;
+                <label>
+                    <input type="radio" name="Gender" value="Female" required>
+                </label> Female&nbsp;&nbsp;&nbsp;
+                <label>
+                    <input type="radio" name="Gender" value="Other" required>
+                </label> Other
+    		</div>
+<!----submit-->
+          <div class="box" style="background: #2d3e3f">
+            <input type="submit" class="submit" name= "submit" value="Submit" onclick="alert('Your Action is Completed!')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="submit">
+              <a href="{% url 'schoolapp:allProCat'%}" id="LogoutAction">Log out</a>
+          </div>
+          </div>
+
+
+
+  <!--Body of Form ends--->
+      </form>
+    </div>
+  </body>
+</html>
